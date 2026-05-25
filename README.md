@@ -34,6 +34,8 @@ The study area is **Beijing, China's capital city**. Beijing is a megacity in th
   - **Sentinel-2**: Cloud filtering, pixel-level cloud masking (QA60 band), surface reflectance normalization, and median temporal compositing to reduce cloud contamination and noise.
   - **Sentinel-1**: Selection of IW mode and ASCENDING orbit images, construction of VV/VH ratio, and median compositing to suppress speckle noise.
   - **Fusion**: Optical and SAR bands were merged into a unified feature space.
+
+
 As the image file is quite large, we have saved it to Drive, where anyone can access and download it. The link is as follows: https://drive.google.com/file/d/1Jh3q5OaY_IeiG9lC5WCZg7ZsZ9thWNVo/view?usp=drive_link
 
 ### Methodology
