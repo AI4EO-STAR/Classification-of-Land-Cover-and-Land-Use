@@ -66,6 +66,8 @@ As the image file is quite large, we have saved it to Drive, where anyone can ac
 <img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/664c80a1-781e-4a21-a891-b5f1520fe0a7" />
 
 ### Key Findings & Model Performance
+<img width="1589" height="690" alt="image" src="https://github.com/user-attachments/assets/b2893321-8523-47d2-87c6-0a7fa746abbd" />
+
 - **Random Forest (RF)** (Combined Bands): Overall Accuracy: **0.8294**, Kappa: **0.7725**.
 - **Model Comparison**: 
   - **GBDT**: Achieved the highest performance (Accuracy: **0.8256**, Kappa: **0.7675**).
