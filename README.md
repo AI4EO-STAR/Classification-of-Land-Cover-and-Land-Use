@@ -37,11 +37,21 @@ The study area is **Beijing, China's capital city**. Beijing is a megacity in th
 As the image file is quite large, we have saved it to Drive, where anyone can access and download it. The link is as follows: https://drive.google.com/file/d/1Jh3q5OaY_IeiG9lC5WCZg7ZsZ9thWNVo/view?usp=drive_link
 
 ### Methodology
+
+#### Integrated Sentinel-1 & Sentinel-2 Data for Land Cover Classification Workflow
+<img width="1448" height="1086" alt="image" src="https://github.com/user-attachments/assets/6032e689-9db6-46f4-b2e3-94e2ed8981e9" />
+
+
 1.  **Data Acquisition & Export**: Satellite imagery is acquired and preprocessed using GEE (code for GEE export is provided as `download_image_from_gee.js`). Label points (`label_points_2024.shp`) are also exported from GEE.
 2.  **Mount Google Drive**: The Colab environment is connected to Google Drive to access exported data from the `GEE_Exports` folder.
 3.  **Data Loading & Visualization**: 
     *   `label_points_2024.shp` (8000 sample points across 4 landcover classes: Water, Vegetation, Urban, Barren) are loaded using `geopandas` and visualized.
     *   `beijing_s1_s2_combined_2024.tif` is loaded using `rasterio`, and RGB, VV, VH, and VV/VH ratio bands are displayed.
+<img width="882" height="814" alt="image" src="https://github.com/user-attachments/assets/c7042ed1-7156-420d-8ee9-0487a1eacaa0" />
+
+<img width="1990" height="285" alt="image" src="https://github.com/user-attachments/assets/e10e725c-9e0e-4ff3-9906-32032c74e103" />
+
+
 4.  **CRS Consistency Check**: Ensures spatial consistency between raster and vector data.
 5.  **Feature Extraction**: Pixel values for all 7 bands are extracted at each sample point and appended to the GeoDataFrame. NaN values in features are filled with 0.
 6.  **Data Splitting**: Data is split into 80% training (6400 samples) and 20% validation (1600 samples), stratified by landcover class.
@@ -49,8 +59,11 @@ As the image file is quite large, we have saved it to Drive, where anyone can ac
     *   **Models**: Random Forest (RF), Support Vector Machine (SVM), Gradient Boosting (GBDT), and XGBoost classifiers are trained.
     *   **Metrics**: Overall Accuracy and Cohen's Kappa score are used for evaluation.
 8.  **Full-Image Classification**: The best-performing model (or a selected model like Random Forest) is used to classify the entire `beijing_s1_s2_combined_2024.tif` raster, and the resulting classified map is saved as `beijing_landcover_classified.tif`.
-9.  **Visualization & Comparison**: The classified map is visualized alongside the original RGB composite for visual assessment. A confusion matrix is also generated.
-10. **Feature Importance Analysis**: Feature importance is calculated and visualized for the Random Forest model to understand the contribution of each band.
+<img width="1990" height="643" alt="image" src="https://github.com/user-attachments/assets/af61581b-f0e3-4651-a1ca-8023f2b54bfc" />
+
+10.  **Visualization & Comparison**: The classified map is visualized alongside the original RGB composite for visual assessment. A confusion matrix is also generated.
+11. **Feature Importance Analysis**: Feature importance is calculated and visualized for the Random Forest model to understand the contribution of each band.
+<img width="989" height="590" alt="image" src="https://github.com/user-attachments/assets/664c80a1-781e-4a21-a891-b5f1520fe0a7" />
 
 ### Key Findings & Model Performance
 - **Random Forest (RF)** (Combined Bands): Overall Accuracy: **0.8294**, Kappa: **0.7725**.
